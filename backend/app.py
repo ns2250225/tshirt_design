@@ -289,8 +289,8 @@ def optimize_prompt():
         
         # 1. 优先尝试提取 <result> 标签内容
         if "<result>" in content:
-            # 取 <result> 之后的内容
-            optimized_prompt = content.split("<result>", 1)[1]
+            # 取最后一个 <result> 之后的内容，防止前面有思考过程提到 <result>
+            optimized_prompt = content.split("<result>")[-1]
             # 如果有 </result>，则取其之前的内容
             if "</result>" in optimized_prompt:
                 optimized_prompt = optimized_prompt.split("</result>", 1)[0]
