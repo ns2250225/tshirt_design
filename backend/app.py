@@ -281,10 +281,45 @@ def optimize_prompt():
         response = client.chat.completions.create(
             model="gemini-3-flash-preview",
             messages=[
-                {"role": "user", "content": f"根据用户输入的提示词：【{user_input}】，改写风格提示词：【{style_prompt}】（”主题“替换为用户输入相关的主题系列），转化成nano banana pro的设计提示词（提示词末尾加上：**isolated on white background.**），要求只返回设计的提示词（中文显示），不能返回其他内容"}
+                {"role": "system", "content": "你是一个提示词优化机器人。你的唯一任务是输出最终的提示词文本。严禁输出任何思考过程。请务必将最终生成的提示词包裹在 <result> 和 </result> 标签中，例如：<result>都市设计...</result>。"},
+                {"role": "user", "content": f"任务：根据用户输入【{user_input}】和风格模板【{style_prompt}】生成nano banana pro风格的设计提示词。\n要求：\n1. 将风格模板中的“主题”替换为用户输入的主题。\n2. 保持都市设计、赛博朋克美学等核心风格。\n3. 提示词末尾必须包含：**isolated on white background.**\n4. 输出中文提示词。\n5. 最终结果必须用 <result> 标签包裹。"}
             ]
         )
-        optimized_prompt = response.choices[0].message.content
+        content = response.choices[0].message.content.strip()
+        
+        # 1. 优先尝试提取 <result> 标签内容
+        if "<result>" in content:
+            # 取 <result> 之后的内容
+            optimized_prompt = content.split("<result>", 1)[1]
+            # 如果有 </result>，则取其之前的内容
+            if "</result>" in optimized_prompt:
+                optimized_prompt = optimized_prompt.split("</result>", 1)[0]
+            optimized_prompt = optimized_prompt.strip()
+        else:
+            # 2. 如果没有标签，回退到关键词匹配
+            # 查找包含 isolated on white background 的行/段落
+            lines = content.split('\n')
+            target_line = None
+            for line in lines:
+                if "isolated on white background" in line:
+                    target_line = line.strip()
+            
+            if target_line:
+                # 尝试去掉可能的前缀，如 "设计提示词："
+                if "：" in target_line:
+                    optimized_prompt = target_line.split("：")[-1].strip()
+                elif ":" in target_line:
+                    optimized_prompt = target_line.split(":")[-1].strip()
+                else:
+                    optimized_prompt = target_line
+            else:
+                # 3. 最后的兜底：如果连关键词都找不到，使用原有逻辑尝试清洗
+                optimized_prompt = content
+                for split_key in ["提示词如下：", "设计提示词：", "Output:", "Here is the refined prompt:"]:
+                    if split_key in optimized_prompt:
+                        optimized_prompt = optimized_prompt.split(split_key)[-1].strip()
+                        break
+
         return jsonify({"optimized_prompt": optimized_prompt})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
