@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: tshirt-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      # 持久化生成的图片和历史记录
+      - ./backend/static:/app/static
+    environment:
+      - FLASK_ENV=production
+    restart: always
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: tshirt-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
