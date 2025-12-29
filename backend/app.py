@@ -282,7 +282,7 @@ def optimize_prompt():
             model="gemini-3-flash-preview",
             messages=[
                 {"role": "system", "content": "你是一个提示词优化机器人。你的唯一任务是输出最终的提示词文本。严禁输出任何思考过程。请务必将最终生成的提示词包裹在 <result> 和 </result> 标签中，例如：<result>都市设计...</result>。"},
-                {"role": "user", "content": f"任务：根据用户输入【{user_input}】和风格模板【{style_prompt}】生成nano banana pro风格的设计提示词。\n要求：\n1. 将风格模板中的“主题”替换为用户输入的主题。\n2. 保持都市设计、赛博朋克美学等核心风格。\n3. 提示词末尾必须包含：**isolated on white background.**\n4. 输出中文提示词。\n5. 最终结果必须用 <result> 标签包裹。"}
+                {"role": "user", "content": f"任务：根据用户输入【{user_input}】和风格模板【{style_prompt}】生成nano banana pro风格的设计提示词。\n要求：\n1. 将风格模板中的“主题”替换为用户输入的主题。\n2. 提示词末尾必须包含：**isolated on white background.**\n4. 输出中文提示词。\n5. 最终结果必须用 <result> 标签包裹。"}
             ]
         )
         content = response.choices[0].message.content.strip()
