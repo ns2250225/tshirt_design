@@ -32,6 +32,6 @@
 
 ## 6. 幽默/标语（Humor/Slogan）
 
-> **Prompt:** Humorous slogan t-shirt design, bold text "主题" in sarcastic font, simple black and white, funny vibe, isolated graphic print-ready, **isolated on white background.**
+> **Prompt:** Humorous slogan design, bold text "主题" in sarcastic font, simple black and white, funny vibe, isolated graphic print-ready, **isolated on white background.**
 
 ---
