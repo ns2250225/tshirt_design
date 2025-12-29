@@ -29,3 +29,9 @@
 > **Prompt:** A graphic in the style of a Tarot card named "主题". Ornate gold borders, celestial symbols, moon and sun motifs surrounding. Etched linework style, mystical and esoteric, black and gold ink, **isolated on white background.**
 
 ---
+
+## 6. 幽默/标语（Humor/Slogan）
+
+> **Prompt:** Humorous slogan t-shirt design, bold text "主题" in sarcastic font, simple black and white, funny vibe, isolated graphic print-ready, **isolated on white background.**
+
+---
