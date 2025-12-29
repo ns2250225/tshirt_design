@@ -2,13 +2,13 @@
 
 ## 1. 极简主义风格 (Minimalism)
 
-> **Prompt:** A minimalist design, a tiny single-line art icon of a digital banana with a microchip texture. Below it, the text "主题" in a clean, sophisticated Sans-serif font. High contrast, black ink, vector style, elegant and simple, **isolated on white background.**
+> **Prompt:** Minimalist design, simple black line art of "主题", clean negative space, single color, modern elegant, isolated graphic, high detail vector for apparel printing, **isolated on white background.**
 
 ---
 
 ## 2. 复古怀旧风 (Retro & Vintage)
 
-> **Prompt:** A vintage 1980s aesthetic graphic. A stylized banana with vaporwave neon outlines. Bold, bubbly typography reading "主题" in sunset orange and teal colors. Distressed texture, pop art style, **isolated on white background.**
+> **Prompt:** Vintage retro graphic design, distressed faded effect, 80s style "主题" in bold colors with grainy texture, high resolution, vector style for printing, **isolated on white background.**
 
 ---
 
@@ -26,7 +26,7 @@
 
 ## 5. 塔罗与玄学风 (Tarot & Mystical)
 
-> **Prompt:** A graphic in the style of a Tarot card named "主题". Ornate gold borders, celestial symbols, moon and sun motifs surrounding. Etched linework style, mystical and esoteric, black and gold ink, **isolated on white background.**
+> **Prompt:** Mystical tarot graphic, moon phase with "主题" elements, occult symbols, dark ethereal style, isolated on transparent, high detail, **isolated on white background.**
 
 ---
 
